@@ -38,4 +38,7 @@ RUN mkdir /.ssh
 ENV PATH /google-cloud-sdk/bin:$PATH
 VOLUME ["/.config"]
 
+# Custom entry point
+COPY entry_point.sh /
+ENTRYPOINT [ "/entry_point.sh" ]
 # Leave the rest from gitlab-runner
