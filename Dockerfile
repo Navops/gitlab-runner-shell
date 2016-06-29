@@ -40,5 +40,6 @@ VOLUME ["/.config"]
 
 # Custom entry point
 COPY entry_point.sh /
+CMD ["run", "--user=gitlab-runner", "--working-directory=/home/gitlab-runner"]
 ENTRYPOINT [ "/entry_point.sh" ]
 # Leave the rest from gitlab-runner
