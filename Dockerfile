@@ -11,11 +11,11 @@ RUN curl -fSL "https://${DOCKER_BUCKET}/builds/Linux/x86_64/docker-$DOCKER_VERSI
 	&& echo "${DOCKER_SHA256}  /usr/local/bin/docker" | sha256sum -c - \
 	&& chmod +x /usr/local/bin/docker
 
-# Add google cloud sdk bits (from https://github.com/GoogleCloudPlatform/cloud-sdk-docker/blob/master/Dockerfile )
+# Add google cloud sdk bits ... added make to apt-get... (from https://github.com/GoogleCloudPlatform/cloud-sdk-docker/blob/master/Dockerfile )
 
 # Prepare the image.
 ENV DEBIAN_FRONTEND noninteractive
-RUN apt-get update && apt-get install -y -qq --no-install-recommends wget unzip python php5-mysql php5-cli php5-cgi openjdk-7-jre-headless openssh-client python-openssl && apt-get clean
+RUN apt-get update && apt-get install -y -qq --no-install-recommends wget unzip python php5-mysql php5-cli php5-cgi openjdk-7-jre-headless openssh-client python-openssl make && apt-get clean
 
 # Install the Google Cloud SDK.
 ENV HOME /
