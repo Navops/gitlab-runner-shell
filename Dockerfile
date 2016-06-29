@@ -38,7 +38,8 @@ RUN mkdir /.ssh
 ENV PATH /google-cloud-sdk/bin:$PATH
 VOLUME ["/.config"]
 
-# Custom entry point
+# Custom changes
+RUN echo 'export PATH=/google-cloud-sdk/bin:$PATH' > /etc/profile.d/gcloud.sh
 COPY entry_point.sh /
 CMD ["run", "--user=gitlab-runner", "--working-directory=/home/gitlab-runner"]
 ENTRYPOINT [ "/entry_point.sh" ]
