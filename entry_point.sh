@@ -13,4 +13,7 @@ fi
 
 usermod -a -G $GROUP_NAME gitlab-runner 
 
+chown -R gitlab-runner: /home/gitlab-runner/
+
+echo "args/cmd: $@"
 exec /usr/bin/gitlab-runner "$@"
