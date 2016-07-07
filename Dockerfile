@@ -1,5 +1,4 @@
-# Force to v1.3.2
-FROM gitlab/gitlab-runner:v1.3.2
+FROM gitlab/gitlab-runner
 
 # Add docker bits (from https://github.com/docker-library/docker/blob/7ef1746a46a29d89bac9aca8d0788bd629eb00e6/1.10/Dockerfile)
 
