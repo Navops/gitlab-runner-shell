@@ -1,4 +1,4 @@
-FROM gitlab/gitlab-runner:v1.11.2
+FROM gitlab/gitlab-runner:latest
 
 # Add docker bits (from https://github.com/docker-library/docker/blob/7ef1746a46a29d89bac9aca8d0788bd629eb00e6/1.10/Dockerfile)
 
@@ -9,8 +9,6 @@ ENV DOCKER_SHA256 d0df512afa109006a450f41873634951e19ddabf8c7bd419caeb5a526032d8
 RUN curl -fSL "https://${DOCKER_BUCKET}/builds/Linux/x86_64/docker-$DOCKER_VERSION" -o /usr/local/bin/docker \
 	&& echo "${DOCKER_SHA256}  /usr/local/bin/docker" | sha256sum -c - \
 	&& chmod +x /usr/local/bin/docker
-
-# Add google cloud sdk bits ... added make to apt-get... (from https://github.com/GoogleCloudPlatform/cloud-sdk-docker/blob/master/Dockerfile )
 
 # Prepare the image.
 ENV DEBIAN_FRONTEND noninteractive
