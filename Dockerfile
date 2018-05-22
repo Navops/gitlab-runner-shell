@@ -14,7 +14,7 @@ RUN curl -fSL "https://${DOCKER_BUCKET}/builds/Linux/x86_64/docker-$DOCKER_VERSI
 ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update \
     && apt-get install -y -qq --no-install-recommends wget unzip python python-openssl python-setuptools make \
-    && pip install ansible \
+    && easy_install pip && pip install ansible \
     && apt-get clean
     
 RUN curl -L https://releases.hashicorp.com/packer/1.2.3/packer_1.2.3_linux_amd64.zip > packer.zip \
