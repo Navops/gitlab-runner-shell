@@ -10,11 +10,11 @@ RUN curl -fSL "https://${DOCKER_BUCKET}/builds/Linux/x86_64/docker-$DOCKER_VERSI
 	&& echo "${DOCKER_SHA256}  /usr/local/bin/docker" | sha256sum -c - \
 	&& chmod +x /usr/local/bin/docker
 
-# Prepare the image.
+# Prepare the image.  Ansible 2.5 synchronize doesn't work with docker in our config
 ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update \
     && apt-get install -y -qq --no-install-recommends wget unzip python python-openssl python-setuptools make \
-    && easy_install pip && pip install ansible \
+    && easy_install pip && pip install ansible==2.4.3 \
     && apt-get clean
     
 RUN curl -L https://releases.hashicorp.com/packer/1.2.3/packer_1.2.3_linux_amd64.zip > packer.zip \
