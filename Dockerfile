@@ -15,7 +15,7 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update \
     && apt-get install -y -qq --no-install-recommends wget unzip python python-openssl python-setuptools make \
     && easy_install pip && pip install ansible==2.4.3 && pip install --upgrade cryptography>=1.5 \
-    && apt-get install python3 \
+    && apt-get install -y -qq --no-install-recommends python3 \
     && apt-get clean
     
 RUN curl -L https://releases.hashicorp.com/packer/1.2.3/packer_1.2.3_linux_amd64.zip > packer.zip \
