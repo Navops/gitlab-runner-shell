@@ -1,4 +1,4 @@
-FROM gitlab/gitlab-runner:latest
+FROM gitlab/gitlab-runner:v10.8.0
 
 # Add docker bits (from https://github.com/docker-library/docker/blob/7ef1746a46a29d89bac9aca8d0788bd629eb00e6/1.10/Dockerfile)
 
@@ -15,6 +15,7 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update \
     && apt-get install -y -qq --no-install-recommends wget unzip python python-openssl python-setuptools make \
     && easy_install pip && pip install ansible==2.4.3 && pip install --upgrade cryptography>=1.5 \
+    && apt-get install python3 \
     && apt-get clean
     
 RUN curl -L https://releases.hashicorp.com/packer/1.2.3/packer_1.2.3_linux_amd64.zip > packer.zip \
